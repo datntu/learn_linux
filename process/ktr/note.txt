@@ -1,0 +1,30 @@
+es
+---- lệnh kiểm tra tiến trình----
+ps aux | greap <ten>
+---- tham số môi trường----
+
+vd:
+include<stdio.h>
+include<stdlib.h>
+
+int main(int argc,char *argv[]){
+        printf("số  lượng truyền vào: %d",argc);
+        for(int i=0;i<argc;i++){
+                printf("argv[%d]: %s",i+1,argv[i]);
+        }
+}
+chú tích : argc là số lượng agument truyền vào
+	 : argv là mảng con trỏ 2 chiều ,nó lưu trữ các string truyền vào
+
+----memory layout của một process----
+1 : vùng text ( chứa các chỉ lệnh ngôn ngữ máy) chỉ có quyền read-only
+2 : vùng initdatasegment : (vùng này chứa các biến global và static dc khởi tạo một chách tường minh) có quyền read-write)
+3 : vungf uninitdatasegment: (vùng này sẽ ngược mới vùng init khởi tạo không tường minh) có quyền read-write)
+4 : vùng heap: danh riêng cho việc cấp phát động 
+5 : stack : chứa các hàm và tham số local trong hàm 
+----thao tác với process-----( quan trọng )
+-sử dụng system call fork();
+tiến trình cha và tiến tình con 
+--sử dụng hàm execl()----
+------bài toán quản lý tiến trình--------(đang pause 1h8 minites)
+
